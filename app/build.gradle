@@ -1,0 +1,124 @@
+plugins {
+    id 'com.android.application'
+}
+
+// �汾��������
+def APP_NAME = 'wegomnn'
+// �汾����ʱ��
+def BUILD_TIME = new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))
+
+/**
+ * 1. gradle clean
+ * 2. gradle build / gradle assembleRelease
+ */
+android {
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.wegooooo.ndk"
+        minSdk 21
+        targetSdk 33
+        versionCode 1
+        versionName "1.0.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            abiFilters "arm64-v8a", "armeabi-v7a"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+//    ndkVersion '21.1.6352462'
+//
+//    externalNativeBuild {
+//        cmake {
+//            path file('src/main/cpp/CMakeLists.txt')
+//            version '3.10.2'
+//        }
+//    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    signingConfigs {
+        debug {
+            try {
+                keyAlias KEY_ALIAS
+                keyPassword KEY_PASSWORD
+                storeFile file('../keystore/aoriseSignature.jks')
+                storePassword STORE_PASSWORD
+                v2SigningEnabled false
+            } catch (ex) {
+                throw new InvalidUserDataException(ex.toString())
+            }
+        }
+        release {
+            try {
+                keyAlias KEY_ALIAS
+                keyPassword KEY_PASSWORD
+                storeFile file('../keystore/aoriseReleaseSignature.jks')
+                storePassword STORE_PASSWORD
+                v2SigningEnabled false
+            } catch (ex) {
+                throw new InvalidUserDataException(ex.toString())
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            zipAlignEnabled false
+            signingConfig signingConfigs.debug
+        }
+        release {
+            minifyEnabled false
+            shrinkResources false
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+    // Rename APP
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            if (buildType.name.equals('release')) {
+                // outputFileName = "${APP_NAME}-v${variant.versionName}-${variant.versionCode}-${BUILD_TIME}-${buildType.name}.apk"
+                outputFileName = "${APP_NAME}-v${variant.versionName}-${BUILD_TIME}-${buildType.name}.apk"
+            }
+            if (buildType.name.equals('debug')) {
+                outputFileName = "${APP_NAME}-${buildType.name}.apk"
+            }
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}

@@ -1,2 +1,4 @@
-# android-mnn-sample
-Android 推理模式样例工程
+# android-ndk-sample
+
+## 介绍
+调用 so 文件 demo
