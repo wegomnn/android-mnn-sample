@@ -68,6 +68,26 @@ dependencies {
 
 ## 3、API 介绍
 
-TODO
+### 3.1、Application 初始化的同时调用 mnn 初始化方法
 
-> 因为功能还没有完成，等后续更新
+```
+/**
+ * mnn 初始化
+ *
+ * @param context
+ */
+public static void initialization(Context context)
+```
+
+### 3.2、图片向量解析
+
+```
+/**
+ * 图片向量解析
+ *
+ * @param context   上下文
+ * @param imagePath 图片本地地址
+ * @return
+ */
+public static MnnInfo[] decode(Context context, String imagePath)
+```

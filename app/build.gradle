@@ -2,8 +2,9 @@ plugins {
     id 'com.android.application'
 }
 
+// 版本发布名字
 def APP_NAME = 'wegomnn'
-
+// 版本发布时间
 def BUILD_TIME = new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))
 
 /**

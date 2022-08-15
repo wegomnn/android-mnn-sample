@@ -71,7 +71,7 @@ public class MnnActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String path = MnnActivity.this.getFilesDir() + File.separator;
-                String imagePath = path + "/cat.jpg";
+                String imagePath = path + "cat.jpg";
 
                 try {
                     WegoMnn.copyAssetFileToFiles(MnnActivity.this, "cat.jpg");
