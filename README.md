@@ -7,7 +7,7 @@
 
 ## 2、集成方式
 
-微购图片向量解析库暂时发布到第三方渠道，集成方式如下。集成后的 demo 工程地址: [android-mnn-sample](https://gitee.com/tangjianye/android-mnn-sample)
+微购图片向量解析库暂时发布到第三方渠道，集成方式如下。集成后的 demo 工程地址: [android-mnn-sample](https://github.com/wegomnn/android-mnn-sample)
 
 ### 2.1、根目录 build.gradle 文件配置
 
@@ -24,9 +24,9 @@ buildscript {
 }
 ```
 
-### 2.2、根目录 setting.gradle 文件配置
+### 2.2、根目录 setting.gradle 文件配置（选配）
 
-根目录 setting.gradle 文件 repositories 增加配置：
+根目录 setting.gradle 文件如果有 `dependencyResolutionManagement` 字段，则给 repositories 增加配置：
 > maven { url "https://raw.githubusercontent.com/wegomnn/android-maven/main" }
 
 ```
