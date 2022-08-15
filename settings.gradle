@@ -3,8 +3,10 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        // maven { url "file://D://github//android-maven/" }
+        maven { url "https://raw.githubusercontent.com/wegomnn/android-maven/main" }
         jcenter() // Warning: this repository is going to shut down soon
     }
 }
-rootProject.name = "android-ndk-sample"
+rootProject.name = "android-mnn-sample"
 include ':app'

@@ -2,7 +2,7 @@ package com.wegooooo.ndk;
 
 import android.app.Application;
 
-import com.wegooooo.ndk.utils.MnnUtils;
+import com.wegooooo.mnn.WegoMnn;
 
 /**
  * <pre>
@@ -18,7 +18,7 @@ public class MnnApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        MnnUtils.copyModelFromAssetsToData(this);
+        WegoMnn.initialization(this);
     }
 
     @Override

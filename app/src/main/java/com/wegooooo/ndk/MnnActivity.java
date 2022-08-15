@@ -12,11 +12,11 @@ import android.widget.TextView;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-
-import com.wegooooo.ndk.mnn.LaneDetect;
-import com.wegooooo.ndk.mnn.LaneInfo;
+import com.wegooooo.mnn.MnnInfo;
+import com.wegooooo.mnn.WegoMnn;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 
 public class MnnActivity extends AppCompatActivity {
@@ -71,15 +71,18 @@ public class MnnActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String path = MnnActivity.this.getFilesDir() + File.separator;
-
-                LaneDetect.init("wg_cbir_model.mnn", path, true); //tfj,模型路径,初始化
-
                 String imagePath = path + "/cat.jpg";
-                String mnnPath = path + "/wg_cbir_model.mnn";
-                LaneInfo[] result = LaneDetect.mnn(imagePath, mnnPath);
+
+                try {
+                    WegoMnn.copyAssetFileToFiles(MnnActivity.this, "cat.jpg");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                MnnInfo[] result = WegoMnn.decode(MnnActivity.this, imagePath);
 
                 final StringBuilder sb = new StringBuilder();
-                for (LaneInfo item : result) {
+                for (MnnInfo item : result) {
                     sb.append(String.format("%e", item.x0));
                     sb.append("\n");
                 }
