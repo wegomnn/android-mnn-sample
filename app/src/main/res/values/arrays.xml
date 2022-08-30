@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="size">
+        <item>1000</item>
+        <item>2000</item>
+        <item>5000</item>
+        <item>8000</item>
+        <item>10000</item>
+    </string-array>
+
+    <string-array name="source">
+        <item>缩略图</item>
+        <item>原始图</item>
+    </string-array>
+</resources>

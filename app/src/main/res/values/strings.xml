@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">Mnn Sample</string>
+    <string name="app_name">微购搜索</string>
+    <string name="action_goto_search">搜索</string>
+    <string name="activity_batch_parse">图片批量解析</string>
+    <string name="activity_append_parse">图片追加解析</string>
+    <string name="activity_search_result">图片搜索结果</string>
 </resources>

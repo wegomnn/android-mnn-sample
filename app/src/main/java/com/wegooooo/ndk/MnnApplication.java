@@ -1,6 +1,7 @@
 package com.wegooooo.ndk;
 
 import android.app.Application;
+import android.util.Log;
 
 import com.wegooooo.mnn.WegoMnn;
 
@@ -24,5 +25,6 @@ public class MnnApplication extends Application {
     @Override
     public void onTerminate() {
         super.onTerminate();
+        Log.e("wegomnn", "内存不足！");
     }
 }
