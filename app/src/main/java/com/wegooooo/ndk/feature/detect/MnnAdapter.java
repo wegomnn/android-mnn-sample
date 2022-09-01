@@ -48,7 +48,7 @@ public class MnnAdapter extends RecyclerView.Adapter<MnnAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        String src = Utils.fullPath(mContext, mData.get(position));
+        String src = Utils.getImagePath(mContext, mData.get(position));
         Bitmap bitmap = Utils.getLocalBitmap(src);
         if (bitmap != null) {
             holder.itemImage.setOnClickListener(view -> {

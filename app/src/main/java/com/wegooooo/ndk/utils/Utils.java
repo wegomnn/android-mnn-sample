@@ -30,7 +30,11 @@ public class Utils {
         }
     }
 
-    public static String fullPath(Context context, String filename) {
-        return context.getCacheDir() + File.separator + "thumbnails" + File.separator + filename;
+    public static String getImageDir(Context context) {
+        return context.getCacheDir() + File.separator + "thumbnails";
+    }
+
+    public static String getImagePath(Context context, String filename) {
+        return getImageDir(context) + File.separator + filename;
     }
 }

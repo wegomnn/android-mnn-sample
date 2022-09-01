@@ -15,10 +15,11 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import com.wegooooo.mnn.WegoMnn;
 import com.wegooooo.ndk.R;
 import com.wegooooo.ndk.databinding.ActivityMnnBinding;
+import com.wegooooo.ndk.utils.Utils;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class BatchParseActivity extends AppCompatActivity {
     private ActivityMnnBinding mViewBinding;
@@ -100,7 +101,7 @@ public class BatchParseActivity extends AppCompatActivity {
     private List<String> getListStrings() {
         List<String> data = new ArrayList<>();
         for (int i = 0; i < mSize; i++) {
-            data.add(String.format("ukbench%05d.th.jpg", i));
+            data.add(String.format(Locale.getDefault(), "ukbench%05d.th.jpg", i));
         }
         return data;
     }
@@ -113,7 +114,7 @@ public class BatchParseActivity extends AppCompatActivity {
 
         long now = System.currentTimeMillis();
         for (int i = 0; i < nb; i++) {
-            float[] array = parseImage("thumbnails" + File.separator + String.format("ukbench%05d.th.jpg", i));
+            float[] array = parseImage(String.format(Locale.getDefault(), "ukbench%05d.th.jpg", i));
             for (int j = 0; j < array.length; j++) {
                 collection[i * size + j] = array[j];
             }
@@ -141,9 +142,8 @@ public class BatchParseActivity extends AppCompatActivity {
     }
 
     private float[] parseImage(String filename) {
-        String imagePath = this.getCacheDir() + File.separator + filename;
-        float[] result = WegoMnn.detect(imagePath);
-        return result;
+        String imagePath = Utils.getImagePath(this, filename);
+        return WegoMnn.detect(imagePath);
     }
 
     private void resultView() {

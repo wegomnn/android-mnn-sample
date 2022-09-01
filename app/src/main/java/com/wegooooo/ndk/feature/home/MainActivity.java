@@ -12,6 +12,7 @@ import com.wegooooo.mnn.WegoMnn;
 import com.wegooooo.ndk.databinding.ActivityMainBinding;
 import com.wegooooo.ndk.feature.detect.AppendParseActivity;
 import com.wegooooo.ndk.feature.detect.BatchParseActivity;
+import com.wegooooo.ndk.utils.Utils;
 
 import java.io.File;
 import java.io.IOException;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        File dir = new File(this.getCacheDir() + File.separator + "thumbnails");
+        File dir = new File(Utils.getImageDir(this));
         boolean isDirExists = dir.exists();
         Log.i("wegomnn", isDirExists + "");
 

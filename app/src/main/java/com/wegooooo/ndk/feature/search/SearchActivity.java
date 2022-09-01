@@ -16,9 +16,9 @@ import com.wegooooo.ndk.databinding.ActivitySearchBinding;
 import com.wegooooo.ndk.feature.detect.MnnAdapter;
 import com.wegooooo.ndk.utils.Utils;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class SearchActivity extends AppCompatActivity {
     private ActivitySearchBinding mViewBinding;
@@ -71,7 +71,7 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        String src = Utils.fullPath(this, String.format("ukbench%05d.th.jpg", mPosition));
+        String src = Utils.getImagePath(this, String.format(Locale.getDefault(), "ukbench%05d.th.jpg", mPosition));
         Bitmap bitmap = Utils.getLocalBitmap(src);
         mViewBinding.ivTarget.setImageBitmap(bitmap);
     }
@@ -97,18 +97,18 @@ public class SearchActivity extends AppCompatActivity {
     private List<String> getListStrings() {
         List<String> data = new ArrayList<>();
         for (Integer item : mResult) {
-            data.add(String.format("ukbench%05d.th.jpg", item));
+            data.add(String.format(Locale.getDefault(), "ukbench%05d.th.jpg", item));
         }
         return data;
     }
 
     private void parse() {
-        float[] target = parseImage("thumbnails" + File.separator + String.format("ukbench%05d.th.jpg", mPosition));
+        float[] target = parseImage(String.format(Locale.getDefault(), "ukbench%05d.th.jpg", mPosition));
         search(target);
     }
 
     private float[] parseImage(String filename) {
-        String imagePath = this.getCacheDir() + File.separator + filename;
+        String imagePath = Utils.getImagePath(this, filename);
         return WegoMnn.detect(imagePath);
     }
 

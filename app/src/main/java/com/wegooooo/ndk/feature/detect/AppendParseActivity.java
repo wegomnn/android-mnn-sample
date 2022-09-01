@@ -13,10 +13,11 @@ import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.wegooooo.mnn.WegoMnn;
 import com.wegooooo.ndk.databinding.ActivityMnnBinding;
+import com.wegooooo.ndk.utils.Utils;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class AppendParseActivity extends AppCompatActivity {
     private static final int SIZE = 100;
@@ -101,7 +102,7 @@ public class AppendParseActivity extends AppCompatActivity {
     private List<String> getAppendImages() {
         List<String> data = new ArrayList<>();
         for (int i = mIndex * SIZE; i < (mIndex + 1) * SIZE; i++) {
-            data.add(String.format("ukbench%05d.th.jpg", i));
+            data.add(String.format(Locale.getDefault(), "ukbench%05d.th.jpg", i));
         }
         return data;
     }
@@ -114,7 +115,7 @@ public class AppendParseActivity extends AppCompatActivity {
 
         long now = System.currentTimeMillis();
         for (int i = 0; i < SIZE; i++) {
-            float[] array = parseImage("thumbnails" + File.separator + mAppendImages.get(i));
+            float[] array = parseImage(mAppendImages.get(i));
             for (int j = 0; j < array.length; j++) {
                 collection[i * size + j] = array[j];
             }
@@ -140,9 +141,8 @@ public class AppendParseActivity extends AppCompatActivity {
     }
 
     private float[] parseImage(String filename) {
-        String imagePath = this.getCacheDir() + File.separator + filename;
-        float[] result = WegoMnn.detect(imagePath);
-        return result;
+        String imagePath = Utils.getImagePath(this, filename);
+        return WegoMnn.detect(imagePath);
     }
 
     private void resultView() {
