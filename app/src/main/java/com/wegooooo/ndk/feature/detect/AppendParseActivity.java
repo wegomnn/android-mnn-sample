@@ -102,7 +102,7 @@ public class AppendParseActivity extends AppCompatActivity {
     private List<String> getAppendImages() {
         List<String> data = new ArrayList<>();
         for (int i = mIndex * SIZE; i < (mIndex + 1) * SIZE; i++) {
-            data.add(String.format(Locale.getDefault(), "ukbench%05d.th.jpg", i));
+            data.add(String.format(Locale.getDefault(), "ukbench%05d.jpg", i));
         }
         return data;
     }

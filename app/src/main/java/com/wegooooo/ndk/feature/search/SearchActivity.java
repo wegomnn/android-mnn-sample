@@ -71,7 +71,7 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        String src = Utils.getImagePath(this, String.format(Locale.getDefault(), "ukbench%05d.th.jpg", mPosition));
+        String src = Utils.getImagePath(this, String.format(Locale.getDefault(), "ukbench%05d.jpg", mPosition));
         Bitmap bitmap = Utils.getLocalBitmap(src);
         mViewBinding.ivTarget.setImageBitmap(bitmap);
     }
@@ -97,13 +97,13 @@ public class SearchActivity extends AppCompatActivity {
     private List<String> getListStrings() {
         List<String> data = new ArrayList<>();
         for (Integer item : mResult) {
-            data.add(String.format(Locale.getDefault(), "ukbench%05d.th.jpg", item));
+            data.add(String.format(Locale.getDefault(), "ukbench%05d.jpg", item));
         }
         return data;
     }
 
     private void parse() {
-        float[] target = parseImage(String.format(Locale.getDefault(), "ukbench%05d.th.jpg", mPosition));
+        float[] target = parseImage(String.format(Locale.getDefault(), "ukbench%05d.jpg", mPosition));
         search(target);
     }
 

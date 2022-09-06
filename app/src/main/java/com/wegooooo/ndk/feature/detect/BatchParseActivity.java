@@ -101,7 +101,7 @@ public class BatchParseActivity extends AppCompatActivity {
     private List<String> getListStrings() {
         List<String> data = new ArrayList<>();
         for (int i = 0; i < mSize; i++) {
-            data.add(String.format(Locale.getDefault(), "ukbench%05d.th.jpg", i));
+            data.add(String.format(Locale.getDefault(), "ukbench%05d.jpg", i));
         }
         return data;
     }
@@ -114,7 +114,7 @@ public class BatchParseActivity extends AppCompatActivity {
 
         long now = System.currentTimeMillis();
         for (int i = 0; i < nb; i++) {
-            float[] array = parseImage(String.format(Locale.getDefault(), "ukbench%05d.th.jpg", i));
+            float[] array = parseImage(String.format(Locale.getDefault(), "ukbench%05d.jpg", i));
             for (int j = 0; j < array.length; j++) {
                 collection[i * size + j] = array[j];
             }

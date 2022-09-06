@@ -18,7 +18,7 @@ import java.io.File;
 import java.io.IOException;
 
 
-public class MainActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
     private ActivityMainBinding mViewBinding;
     private ProgressDialog progressDialog;
 
@@ -72,12 +72,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void gotoBatchPage() {
         Intent intent = new Intent(this, BatchParseActivity.class);
-        MainActivity.this.startActivity(intent);
+        HomeActivity.this.startActivity(intent);
     }
 
     private void gotoAppendPage() {
         Intent intent = new Intent(this, AppendParseActivity.class);
-        MainActivity.this.startActivity(intent);
+        HomeActivity.this.startActivity(intent);
     }
 
     private void preImage() {
