@@ -3,6 +3,8 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        // maven { url "file://D://github//android-maven/" }
+        maven { url "https://raw.githubusercontent.com/wegomnn/android-maven/main" }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:7.0.0"
